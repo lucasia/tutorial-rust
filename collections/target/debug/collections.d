@@ -1,1 +1,0 @@
-/mnt/c/Users/ianlu/proj/tutorials/tutorial-rust/collections/target/debug/collections: /mnt/c/Users/ianlu/proj/tutorials/tutorial-rust/collections/src/main.rs /mnt/c/Users/ianlu/proj/tutorials/tutorial-rust/collections/src/string.rs /mnt/c/Users/ianlu/proj/tutorials/tutorial-rust/collections/src/vectors.rs
