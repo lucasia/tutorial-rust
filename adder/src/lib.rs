@@ -6,6 +6,7 @@ pub fn add(left: usize, right: usize) -> usize {
 }
 
 pub fn add_two(x: i32) -> i32 {
+    println!("Calling add_two with x={}", x);
     x + 2
 }
 
@@ -39,5 +40,11 @@ mod tests {
                 "Greeting did not containt name '{}', value was '{}'",
                 name, result
         );
+    }
+
+    #[test]
+    #[ignore]
+    fn expensive_test() {
+        // code that takes an hour to run
     }
 }
