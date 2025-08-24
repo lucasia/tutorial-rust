@@ -8,5 +8,9 @@ rand = "0.8.5"
 
 [[bin]]
 name = "guessing_game"
-path = "src/ch2/guessing_game.rs"
+path = "src/ch2_game/guessing_game.rs"
+
+[[bin]]
+name = "concepts"
+path = "src/ch3_concepts/concepts.rs"
 
