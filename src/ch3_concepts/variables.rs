@@ -26,4 +26,3 @@ pub fn shadowing() {
 
     println!("x' is {x}");  // x' = 6 (still)
 }
-
