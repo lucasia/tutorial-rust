@@ -1,0 +1,12 @@
+[package]
+name = "tutorial-rust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8.5"
+
+[[bin]]
+name = "guessing_game"
+path = "src/ch2/main.rs"
+
