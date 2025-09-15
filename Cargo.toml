@@ -14,3 +14,6 @@ path = "src/ch2_game/guessing_game.rs"
 name = "concepts"
 path = "src/ch3_concepts/main.rs"
 
+[[bin]]
+name = "ownership"
+path = "src/ch4_ownership/main.rs"
