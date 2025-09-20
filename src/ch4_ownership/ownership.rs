@@ -1,3 +1,5 @@
+use log::debug;
+
 pub fn ownership() {
     move_example_one();
     move_example_two();
@@ -11,28 +13,28 @@ pub fn ownership() {
 fn move_example_one() {
     let x = 5;
     let y = x;
-    println!("x: {}, y: {}", x, y);
+    debug!("x: {}, y: {}", x, y);
 
 
     let s1 = String::from("hello");
     let s2 = s1;    // s1 moved, no longer able to be used!
 
-    println!("{s2}, world!");
+    debug!("{s2}, world!");
 }
 
 fn move_example_two() {
     let mut s = String::from("hello");
-    println!("{s}");
+    debug!("{s}");
     s = String::from("ahoy");
 
-    println!("M2: {s}, world!");
+    debug!("M2: {s}, world!");
 }
 
 fn clone_example() {
     let s1 = String::from("hello");
     let s2 = s1.clone();
 
-    println!("s1={s1}, s2={s2}");
+    debug!("s1={s1}, s2={s2}");
 }
 
 // ======================
@@ -47,11 +49,11 @@ fn function_ownership_example() {
 }
 
 fn takes_ownership(some_string: String) {
-    println!("{some_string}");
+    debug!("{some_string}");
 }
 
 fn makes_copy(some_integer: i32) {
-    println!("{some_integer}");
+    debug!("{some_integer}");
 }
 
 // ======================
@@ -65,7 +67,7 @@ fn return_values_example() {
 
     // s2 no longer available to us
     
-    println!("s1={s1}, s3={s3}");
+    debug!("s1={s1}, s3={s3}");
 }
 
 fn gives_ownership() -> String {

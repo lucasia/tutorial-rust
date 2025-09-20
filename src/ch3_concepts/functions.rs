@@ -1,3 +1,5 @@
+use log::debug;
+
 pub fn function_one() {
     function_two(5, 'h');
 
@@ -6,15 +8,15 @@ pub fn function_one() {
         x + 1
     };
 
-    println!("y = {y}");
+    debug!("y = {y}");
  
     let x = plus_one(5);
-    println!("The value of x = {x}");
+    debug!("The value of x = {x}");
     
 }
 
 fn function_two(value: i32, unit_label: char) {
-    println!("The measure is {value}{unit_label}");
+    debug!("The measure is {value}{unit_label}");
 }
 
 fn plus_one(x: i32) -> i32 {
