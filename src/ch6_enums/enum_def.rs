@@ -24,13 +24,13 @@ pub fn enum_def() {
     debug!("loopback: {:?}", loopback.to_string());
 
     // option
-    assert_eq!(4, safe_square(Some(2)));
-    assert_eq!(0, safe_square(None));
+    assert_eq!(Some(4), safe_square(Some(2)));
+    assert_eq!(None, safe_square(None));
 }
 
-fn safe_square(value: Option<i32>) -> i32 {
+fn safe_square(value: Option<i32>) -> Option<i32> {
     match value {
-        Some(x) => x * x,
-        None => 0,
+        Some(x) => Some(x * x),
+        None => None,
     }
 }
