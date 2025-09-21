@@ -23,3 +23,8 @@ path = "src/ch4_ownership/main.rs"
 [[bin]]
 name = "structs"
 path = "src/ch5_structs/main.rs"
+
+[[bin]]
+name = "enums"
+path = "src/ch6_enums/main.rs"
+
