@@ -1,19 +1,16 @@
 mod control_flow;
-mod functions;
 mod data_types;
+mod functions;
 mod variables;
-use log::{debug, info};
+use log::info;
 
 fn main() {
     env_logger::init();
 
     info!("========== 3.6 fibbonacci ==========");
-
     fibbonacci(8);
 
-
     info!("========== 3.5 control flow ==========");
-
     control_flow::control_flow();
 
     // 3.4 comments - this is a comment!
@@ -22,7 +19,6 @@ fn main() {
     functions::function_one();
 
     info!("========== 3.2 data types ==========");
-
     data_types::integer_types();
     data_types::float_types();
     data_types::char_types();
@@ -31,10 +27,8 @@ fn main() {
     data_types::arrays();
 
     info!("========== 3.1 variables ==========");
-
     variables::mutability();
     variables::shadowing();
-
 }
 
 pub fn celsius_to_degrees(celsius: f64) -> f64 {

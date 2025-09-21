@@ -13,7 +13,6 @@ pub fn mutability() {
 }
 
 pub fn shadowing() {
-
     let x = 5; // x = 5
     debug!("x is {x}");
 
@@ -21,10 +20,9 @@ pub fn shadowing() {
     debug!("x' is {x}");
 
     {
-        let x = x * 2;  // x'' = 12
+        let x = x * 2; // x'' = 12
         debug!(">> inner x'' is {x}");
-
     }
 
-    debug!("x' is {x}");  // x' = 6 (still)
+    debug!("x' is {x}"); // x' = 6 (still)
 }

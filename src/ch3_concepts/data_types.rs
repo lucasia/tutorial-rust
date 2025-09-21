@@ -24,7 +24,7 @@ pub fn float_types() {
     let x = 2.5; // f64
     debug!("The value of x is: {x}");
 
-    let y : f32 = 3.3;
+    let y: f32 = 3.3;
     debug!("The value of y is: {y}");
 }
 
@@ -49,7 +49,6 @@ pub fn math_operations() {
 }
 
 pub fn tuples() {
-
     let tup = (500, 6.4, 1);
     debug!("The value of x is {}", tup.0);
 
@@ -64,5 +63,4 @@ pub fn arrays() {
 
     let b = [3; 5];
     debug!("{:?}", b);
-
 }

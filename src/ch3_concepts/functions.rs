@@ -9,10 +9,9 @@ pub fn function_one() {
     };
 
     debug!("y = {y}");
- 
+
     let x = plus_one(5);
     debug!("The value of x = {x}");
-    
 }
 
 fn function_two(value: i32, unit_label: char) {

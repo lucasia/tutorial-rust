@@ -13,7 +13,7 @@ fn fors() {
     for element in a {
         debug!("the value is: {element}");
     }
-    
+
     for number in (1..4).rev() {
         debug!("{}!", number);
     }

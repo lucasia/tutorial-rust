@@ -9,15 +9,13 @@ pub fn ownership() {
     return_values_example();
 }
 
-
 fn move_example_one() {
     let x = 5;
     let y = x;
     debug!("x: {}, y: {}", x, y);
 
-
     let s1 = String::from("hello");
-    let s2 = s1;    // s1 moved, no longer able to be used!
+    let s2 = s1; // s1 moved, no longer able to be used!
 
     debug!("{s2}, world!");
 }
@@ -63,10 +61,10 @@ fn makes_copy(some_integer: i32) {
 fn return_values_example() {
     let s1 = gives_ownership();
     let s2 = String::from("hello");
-    let s3 = takes_and_gives_back(s2);  // s2 is moved here
+    let s3 = takes_and_gives_back(s2); // s2 is moved here
 
     // s2 no longer available to us
-    
+
     debug!("s1={s1}, s3={s3}");
 }
 
