@@ -1,14 +1,14 @@
 use log::debug;
 
-enum Coin {
+pub enum Coin {
     Penny,
     Nickel,
     Dime,
     Quarter(UsState),
 }
 
-#[derive(Debug)]
-enum UsState {
+#[derive(Debug, PartialEq)]
+pub enum UsState {
     Alabama,
     // you get the idea...
 }
