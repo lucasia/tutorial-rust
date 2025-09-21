@@ -9,7 +9,7 @@ enum IpAddrKind {
 impl IpAddrKind {
     fn to_string(&self) -> String {
         match &self {
-            IpAddrKind::V4(a,b,c,d) => format!("{a}.{b}.{c}.{d}"),
+            IpAddrKind::V4(a, b, c, d) => format!("{a}.{b}.{c}.{d}"),
             IpAddrKind::V6(addr) => addr.clone(),
         }
     }
@@ -17,7 +17,7 @@ impl IpAddrKind {
 
 pub fn enum_def() {
     // enums
-    let home = IpAddrKind::V4(127,0,0,1);
+    let home = IpAddrKind::V4(127, 0, 0, 1);
     let loopback = IpAddrKind::V6(String::from("::1"));
 
     debug!("home: {:?}", home.to_string());
@@ -31,6 +31,6 @@ pub fn enum_def() {
 fn safe_square(value: Option<i32>) -> i32 {
     match value {
         Some(x) => x * x,
-        None => 0
+        None => 0,
     }
 }
