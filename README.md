@@ -11,3 +11,7 @@ cargo run -p ch3_concepts # run specific binary, e.g. ch2_game
 RUST_LOG=debug cargo run -p ch3_concepts # run binary with log level, e.g. concepts with debug logs
 cargo doc --open # generate documentation, incl. all dependencies
 ```
+
+
+### References:
+* [Rust API](https://doc.rust-lang.org/std/index.html#modules)

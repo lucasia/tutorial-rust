@@ -5,7 +5,8 @@ members = [
     "crates/ch4_ownership",
     "crates/ch5_structs",
     "crates/ch6_enums",
-    "crates/ch7_module_types"
+    "crates/ch7_module_types",
+    "crates/ch8_collections",
 ]
 
 resolver = "2" # Recommended for newer Rust versions
