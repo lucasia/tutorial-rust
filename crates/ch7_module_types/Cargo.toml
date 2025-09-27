@@ -1,5 +1,5 @@
 [package]
-name = "ch4_ownership"
+name = "ch7_module_types"
 version = "0.1.0"
 edition = "2024"
 

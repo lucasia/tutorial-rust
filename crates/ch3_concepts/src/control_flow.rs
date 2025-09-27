@@ -4,11 +4,11 @@ pub fn control_flow() {
     if_else();
     if_statement();
     loops();
-    whiles();
-    fors();
+    while_loops();
+    for_loops();
 }
 
-fn fors() {
+fn for_loops() {
     let a = [10, 20, 30, 40, 50];
     for element in a {
         debug!("the value is: {element}");
@@ -20,7 +20,7 @@ fn fors() {
     debug!("LIFTOFF!!!");
 }
 
-fn whiles() {
+fn while_loops() {
     let mut number = 3;
     while number != 0 {
         debug!("{number}!");

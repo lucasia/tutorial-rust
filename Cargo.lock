@@ -82,7 +82,6 @@ version = "0.1.0"
 dependencies = [
  "env_logger",
  "log",
- "rand",
 ]
 
 [[package]]
@@ -91,7 +90,6 @@ version = "0.1.0"
 dependencies = [
  "env_logger",
  "log",
- "rand",
 ]
 
 [[package]]
@@ -100,7 +98,6 @@ version = "0.1.0"
 dependencies = [
  "env_logger",
  "log",
- "rand",
 ]
 
 [[package]]
@@ -109,7 +106,14 @@ version = "0.1.0"
 dependencies = [
  "env_logger",
  "log",
- "rand",
+]
+
+[[package]]
+name = "ch7_module_types"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "log",
 ]
 
 [[package]]
