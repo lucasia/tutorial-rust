@@ -1,30 +1,10 @@
-[package]
-name = "tutorial-rust"
-version = "0.1.0"
-edition = "2024"
+[workspace]
+members = [
+    "crates/ch2_game",
+    "crates/ch3_concepts",
+    "crates/ch4_ownership",
+    "crates/ch5_structs",
+    "crates/ch6_enums",
+]
 
-[dependencies]
-rand = "0.8.5"
-log = "0.4.28"
-env_logger = "0.11.8"
-
-[[bin]]
-name = "guessing_game"
-path = "src/ch2_game/guessing_game.rs"
-
-[[bin]]
-name = "concepts"
-path = "src/ch3_concepts/main.rs"
-
-[[bin]]
-name = "ownership"
-path = "src/ch4_ownership/main.rs"
-
-[[bin]]
-name = "structs"
-path = "src/ch5_structs/main.rs"
-
-[[bin]]
-name = "enums"
-path = "src/ch6_enums/main.rs"
-
+resolver = "2" # Recommended for newer Rust versions
