@@ -4,30 +4,32 @@ use std::io::{self, ErrorKind, Read};
 
 pub fn recoverable() {
     debug!("recoverable $$$");
-
     create_dotenv();
+
+    // read user
     let user_result = read_username();
     match user_result {
         Ok(user) => debug!("Found user: {user}"),
         Err(e) => debug!("Error: {e:?}")
     }
+
+    // read a char
+    let char = last_char_of_first_line("the rain\n in spain.").expect("Should have found the char!");
+    assert_eq!('n', char);
+
+    // keep last, panics!
     panic_at_the_disco();
 }
 
+fn last_char_of_first_line(text: &str) -> Option<char> {
+    text.lines().next()?.chars().last()
+}
+
+// verbose to show ?.  can be simplified to fs::read_to_string("path")
 fn read_username() -> Result<String, io::Error> {
-    let username_file_result = File::open("assets/user.txt");
-
-    let mut username_file = match username_file_result {
-        Ok(file) => file,
-        Err(e) => return Err(e),
-    };
-
     let mut username = String::new();
-
-    match username_file.read_to_string(&mut username) {
-        Ok(_) => Ok(username),
-        Err(e) => Err(e),
-    }
+    File::open("assets/user.txt")?.read_to_string(&mut username)?;
+    Ok(username)
 }
 
 fn panic_at_the_disco() -> File {
