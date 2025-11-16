@@ -1,9 +1,11 @@
 mod generics;
+mod lifetimes;
+mod traits;
 
 fn main() {
     env_logger::init();
 
-    println!("Hello, world!");
-    
     generics::generics();
+    traits::traits();
+    lifetimes::lifetimes();
 }

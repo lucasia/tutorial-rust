@@ -10,11 +10,12 @@ pub fn recoverable() {
     let user_result = read_username();
     match user_result {
         Ok(user) => debug!("Found user: {user}"),
-        Err(e) => debug!("Error: {e:?}")
+        Err(e) => debug!("Error: {e:?}"),
     }
 
     // read a char
-    let char = last_char_of_first_line("the rain\n in spain.").expect("Should have found the char!");
+    let char =
+        last_char_of_first_line("the rain\n in spain.").expect("Should have found the char!");
     assert_eq!('n', char);
 
     // keep last, panics!
@@ -33,8 +34,7 @@ fn read_username() -> Result<String, io::Error> {
 }
 
 fn panic_at_the_disco() -> File {
-    File::open("disco!")
-        .expect("Panic at the taco bell!")
+    File::open("disco!").expect("Panic at the taco bell!")
 }
 
 fn create_dotenv() {
@@ -53,7 +53,7 @@ fn create_dotenv() {
             ErrorKind::NotFound => match File::create(file_path) {
                 Ok(fc) => fc,
                 Err(e) => panic!("Error creating file: {e:?}"),
-            }
+            },
             _ => {
                 panic!("Error opening file: {error:?}")
             }
