@@ -76,6 +76,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "ch11_testing"
+version = "0.1.0"
+dependencies = [
+ "log",
+]
+
+[[package]]
 name = "ch2_game"
 version = "0.1.0"
 dependencies = [

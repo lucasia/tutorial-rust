@@ -7,6 +7,10 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    fn new (width: u32, height: u32) -> Rectangle {
+        Rectangle { width, height }
+    }
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -38,11 +42,27 @@ pub fn rectangles() {
     let area = rect1.area();
     assert_eq!(area, 1200);
 
-    assert!(rect1.can_hold(&Rectangle {
-        width: 10,
-        height: 20
-    }));
-
     let square1 = Rectangle::square(35);
     assert!(!rect1.can_hold(&square1));
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle::new(8, 4);
+        let smaller = Rectangle::new(4, 1);
+
+        assert!(larger.can_hold(&smaller));
+    }
+
+    #[test]
+    fn smaller_cannot_hold_itself() {
+        let rect = Rectangle::new(2, 5);
+
+        assert!(!rect.can_hold(&rect));
+    }
 }
