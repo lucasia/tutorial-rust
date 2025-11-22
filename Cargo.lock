@@ -83,6 +83,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ch12_cli"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "log",
+]
+
+[[package]]
 name = "ch2_game"
 version = "0.1.0"
 dependencies = [
