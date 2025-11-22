@@ -91,6 +91,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ch13_fp"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "log",
+]
+
+[[package]]
 name = "ch2_game"
 version = "0.1.0"
 dependencies = [
