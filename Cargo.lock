@@ -103,6 +103,14 @@ name = "ch14_cargo"
 version = "0.1.0"
 
 [[package]]
+name = "ch15_smart_ptr"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "log",
+]
+
+[[package]]
 name = "ch2_game"
 version = "0.1.0"
 dependencies = [
