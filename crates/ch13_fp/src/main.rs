@@ -1,6 +1,7 @@
-use log::{debug};
+use log::debug;
 
 mod closures;
+mod iterators;
 
 fn main() {
     env_logger::init();
@@ -8,7 +9,6 @@ fn main() {
     debug!("====== closures ======");
     closures::closures();
 
-    // TODO - 13.2 Iterators next up !
-
+    debug!("====== iterators ======");
+    iterators::iterators();
 }
-

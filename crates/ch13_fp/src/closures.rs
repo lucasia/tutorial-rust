@@ -1,5 +1,5 @@
-use std::thread;
 use log::{debug, info};
+use std::thread;
 
 #[derive(Debug)]
 struct Square {
@@ -57,13 +57,8 @@ pub fn closures() {
     giveaway_example();
 }
 
-
 pub fn fn_mut_example() {
-    let mut list = [
-        Square { side: 10 },
-        Square { side: 5 },
-        Square { side: 1 },
-    ];
+    let mut list = [Square { side: 10 }, Square { side: 5 }, Square { side: 1 }];
 
     list.sort_by_key(|r| r.side);
     debug!("{:?}", list);
@@ -77,7 +72,7 @@ pub fn fn_mut_example() {
 }
 
 pub fn borrow_example() {
-    let list = vec![1,2,3];
+    let list = vec![1, 2, 3];
     debug!("Before defining closure {:?}", list);
     let only_borrows = || debug!("From closure {list:?}");
 
@@ -87,7 +82,7 @@ pub fn borrow_example() {
 }
 
 pub fn mutable_example() {
-    let mut list = vec![1,2,3];
+    let mut list = vec![1, 2, 3];
     debug!("Before defining closure {:?}", list);
 
     let mut borrows_mutably = || list.push(7);
@@ -112,11 +107,15 @@ pub fn giveaway_example() {
 
     let user_pref1 = Some(ShirtColor::Green);
     let giveaway1 = store.giveaway(user_pref1);
-    info!("The user with preference {:?} gets {:?}", user_pref1, giveaway1);
-
+    info!(
+        "The user with preference {:?} gets {:?}",
+        user_pref1, giveaway1
+    );
 
     let user_pref2 = None;
     let giveaway2 = store.giveaway(user_pref2);
-    info!("The user with preference {:?} gets {:?}", user_pref2, giveaway2);
-
+    info!(
+        "The user with preference {:?} gets {:?}",
+        user_pref2, giveaway2
+    );
 }

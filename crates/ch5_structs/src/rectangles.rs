@@ -7,10 +7,6 @@ struct Rectangle {
 }
 
 impl Rectangle {
-    fn new (width: u32, height: u32) -> Rectangle {
-        Rectangle { width, height }
-    }
-
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -46,10 +42,15 @@ pub fn rectangles() {
     assert!(!rect1.can_hold(&square1));
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    impl Rectangle {
+        fn new(width: u32, height: u32) -> Rectangle {
+            Rectangle { width, height }
+        }
+    }
 
     #[test]
     fn larger_can_hold_smaller() {
