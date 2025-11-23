@@ -1,5 +1,5 @@
-use std::ops::Deref;
 use log::debug;
+use std::ops::Deref;
 
 struct MyBox<T>(T);
 
@@ -28,12 +28,12 @@ pub fn derefs() {
 
 fn deref_coersion() {
     let m = MyBox::new(String::from("Rust"));
-    hello(&m);  // deref coersion of `hello(&(*m)[..]);`
+    hello(&m); // deref coersion of `hello(&(*m)[..]);`
 }
 
 fn deref_mybox() {
     let x = 5;
-    let y =  MyBox::new(x);
+    let y = MyBox::new(x);
 
     assert_eq!(5, x);
     assert_eq!(5, *y);
@@ -42,7 +42,6 @@ fn deref_mybox() {
 fn hello(name: &str) {
     debug!("Hello, {name}!");
 }
-
 
 fn deref_int() {
     let x = 5;

@@ -9,12 +9,10 @@ enum List {
 }
 
 pub fn boxes() {
-
     debug!("====== box example ======");
 
     let b = Box::new(42);
     debug!("b = {b}");
-
 
     debug!("====== cons list ======");
     cons_list();
