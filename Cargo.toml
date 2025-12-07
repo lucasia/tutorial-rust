@@ -9,7 +9,7 @@ members = [
     "crates/ch8_collections",
     "crates/ch9_error_handling",
     "crates/ch10_generics",
-    "crates/ch11_testing", "crates/ch12_cli", "crates/ch13_fp", "crates/ch14_cargo", "crates/ch15_smart_ptr",
+    "crates/ch11_testing", "crates/ch12_cli", "crates/ch13_fp", "crates/ch14_cargo", "crates/ch15_smart_ptr", "crates/ch16_concurrency",
 ]
 
 resolver = "2" # Recommended for newer Rust versions
