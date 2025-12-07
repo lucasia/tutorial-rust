@@ -1,7 +1,14 @@
+use log::debug;
+
+mod messages;
 mod threads;
 
 fn main() {
     env_logger::init();
 
-    threads::threads();
+    debug!("========== threads ==========");
+    // threads::threads();
+
+    debug!("========== messages ==========");
+    messages::messages();
 }
