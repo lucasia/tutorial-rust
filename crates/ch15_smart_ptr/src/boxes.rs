@@ -22,7 +22,12 @@ fn cons_list() {
     let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(List::Nil))))));
 
     debug!("Cons list = {:?}", list);
-    let mut current_node = &list;
+
+    print_list(&list);
+}
+
+fn print_list(list: &List) {
+    let mut current_node = list;
 
     while let Cons(value, next_box) = current_node {
         debug!("Cons value = {value}");

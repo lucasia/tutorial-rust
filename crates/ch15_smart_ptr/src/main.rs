@@ -3,6 +3,7 @@ use log::debug;
 mod boxes;
 mod derefs;
 mod drops;
+mod ref_cell;
 mod ref_count;
 
 fn main() {
@@ -20,5 +21,6 @@ fn main() {
     debug!("====== ref counting ======");
     ref_count::ref_count();
 
-    // TODO - 15.5 RefCell<T> https://doc.rust-lang.org/book/ch15-05-interior-mutability.html
+    debug!("====== ref cell ======");
+    ref_cell::ref_cell();
 }
