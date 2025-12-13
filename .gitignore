@@ -21,3 +21,6 @@ target
 
 # env files
 **/*.env
+
+# traces
+**/*.trace
