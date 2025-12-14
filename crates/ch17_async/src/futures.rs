@@ -6,12 +6,10 @@ pub fn futures(url1: &str, url2: &str) {
         let title_fut_1 = page_title(url1);
         let title_fut_2 = page_title(url2);
 
-        let (url, maybe_title) =
-            match trpl::select(title_fut_1, title_fut_2).await {
-                Either::Left(left) => left,
-                Either::Right(right) => right,
-            };
-
+        let (url, maybe_title) = match trpl::select(title_fut_1, title_fut_2).await {
+            Either::Left(left) => left,
+            Either::Right(right) => right,
+        };
 
         info!("{url} returned first");
 
@@ -20,7 +18,6 @@ pub fn futures(url1: &str, url2: &str) {
             None => info!("It had not title"),
         }
     })
-
 }
 
 pub async fn page_title(url: &str) -> (&str, Option<String>) {
