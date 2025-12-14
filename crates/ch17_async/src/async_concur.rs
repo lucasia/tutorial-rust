@@ -1,5 +1,5 @@
-use std::time::Duration;
 use log::debug;
+use std::time::Duration;
 
 pub fn async_concur() {
     join_only();
@@ -8,18 +8,17 @@ pub fn async_concur() {
 }
 
 fn message_passing() {
-
     trpl::block_on(async {
         let (tx, mut rx) = trpl::channel();
 
         let tx1 = tx.clone();
         let tx1_fut = async move {
-            let vals = vec!{
+            let vals = vec![
                 String::from("hi"),
                 String::from("from"),
                 String::from("the"),
                 String::from("future"),
-            };
+            ];
 
             for val in vals {
                 tx1.send(val).unwrap();
@@ -34,12 +33,12 @@ fn message_passing() {
         };
 
         let tx_fut = async move {
-            let vals = vec!{
+            let vals = vec![
                 String::from("more"),
                 String::from("messages"),
                 String::from("for"),
                 String::from("you"),
-            };
+            ];
 
             for val in vals {
                 tx.send(val).unwrap();
