@@ -1,7 +1,6 @@
 mod async_concur;
 mod futures;
 mod timeout;
-mod yield_example;
 
 use log::debug;
 
@@ -13,9 +12,6 @@ fn main() {
 
     debug!("========== async concurrency ==========");
     async_concur::async_concur();
-
-    debug!("========== yield ==========");
-    yield_example::yield_example();
 
     debug!("========== timeout ==========");
     timeout::timeout_example();

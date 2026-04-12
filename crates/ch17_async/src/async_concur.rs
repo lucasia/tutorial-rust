@@ -51,6 +51,7 @@ fn message_passing() {
 
 #[cfg(test)]
 mod tests {
+    use std::thread;
     use std::time::Duration;
     use log::debug;
     use test_log::test;
@@ -100,4 +101,32 @@ mod tests {
         trpl::join(fut1, fut2).await;
     }
 
+    #[test(tokio::test)]
+    async fn test_yield_example() {
+        let a = async {
+            let r1 = slow("a", 30); trpl::yield_now().await;
+            let r2 = slow("a", 10); trpl::yield_now().await;
+            let r3 = slow("a", 20); trpl::yield_now().await;
+            vec![r1, r2, r3]
+        };
+
+        let b = async {
+            let r1 = slow("b", 75); trpl::yield_now().await;
+            let r2 = slow("b", 10); trpl::yield_now().await;
+            let r3 = slow("b", 15); trpl::yield_now().await;
+            let r4 = slow("b", 350); trpl::yield_now().await;
+            vec![r1, r2, r3, r4]
+        };
+
+        let (result_a, result_b) = tokio::join!(a, b);
+        assert_eq!(result_a, vec!["a:30", "a:10", "a:20"]);
+        assert_eq!(result_b, vec!["b:75", "b:10", "b:15", "b:350"]);
+    }
+
+    fn slow(name: &str, ms: u64) -> String {
+        thread::sleep(Duration::from_millis(ms));
+        format!("{name}:{ms}")
+    }
+
 }
+
