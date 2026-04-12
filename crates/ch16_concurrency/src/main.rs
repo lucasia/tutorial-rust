@@ -13,6 +13,6 @@ fn main() {
     debug!("========== messages ==========");
     messages::messages();
 
-    debug!("========== messages ==========");
+    debug!("========== shared state ==========");
     shared_state::shared_state();
 }
