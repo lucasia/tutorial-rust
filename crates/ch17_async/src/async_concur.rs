@@ -1,8 +1,8 @@
 #[cfg(test)]
 mod tests {
+    use log::debug;
     use std::thread;
     use std::time::Duration;
-    use log::debug;
     use test_log::test;
 
     // spawn a new task and wait for it to complete (using await)
@@ -95,17 +95,24 @@ mod tests {
     #[test(tokio::test)]
     async fn test_yield_example() {
         let a = async {
-            let r1 = slow("a", 30); trpl::yield_now().await;
-            let r2 = slow("a", 10); trpl::yield_now().await;
-            let r3 = slow("a", 20); trpl::yield_now().await;
+            let r1 = slow("a", 30);
+            trpl::yield_now().await;
+            let r2 = slow("a", 10);
+            trpl::yield_now().await;
+            let r3 = slow("a", 20);
+            trpl::yield_now().await;
             vec![r1, r2, r3]
         };
 
         let b = async {
-            let r1 = slow("b", 75); trpl::yield_now().await;
-            let r2 = slow("b", 10); trpl::yield_now().await;
-            let r3 = slow("b", 15); trpl::yield_now().await;
-            let r4 = slow("b", 350); trpl::yield_now().await;
+            let r1 = slow("b", 75);
+            trpl::yield_now().await;
+            let r2 = slow("b", 10);
+            trpl::yield_now().await;
+            let r3 = slow("b", 15);
+            trpl::yield_now().await;
+            let r4 = slow("b", 350);
+            trpl::yield_now().await;
             vec![r1, r2, r3, r4]
         };
 
@@ -118,6 +125,4 @@ mod tests {
         thread::sleep(Duration::from_millis(ms));
         format!("{name}:{ms}")
     }
-
 }
-

@@ -17,10 +17,10 @@ fn move_example() {
 
 #[cfg(test)]
 mod tests {
-    use std::thread;
+    use anyhow::{Result, anyhow};
     use log::debug;
+    use std::thread;
     use test_log::test;
-    use anyhow::{anyhow, Result};
 
     fn generate_greetings(num_loops: i32) -> Vec<String> {
         let thread_name = thread::current().name().unwrap_or("").to_string();
@@ -70,7 +70,6 @@ mod tests {
 
         assert_eq!(5, result1.len());
         assert_eq!(10, result2.len());
-
 
         Ok(())
     }
