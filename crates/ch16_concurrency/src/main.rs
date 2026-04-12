@@ -1,8 +1,8 @@
 use log::debug;
 
 mod messages;
-mod threads;
 mod shared_state;
+mod threads;
 
 fn main() {
     env_logger::init();
@@ -15,5 +15,4 @@ fn main() {
 
     debug!("========== messages ==========");
     shared_state::shared_state();
-
 }

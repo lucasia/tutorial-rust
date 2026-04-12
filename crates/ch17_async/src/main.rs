@@ -1,7 +1,7 @@
 mod async_concur;
 mod futures;
-mod yield_example;
 mod timeout;
+mod yield_example;
 
 use log::debug;
 

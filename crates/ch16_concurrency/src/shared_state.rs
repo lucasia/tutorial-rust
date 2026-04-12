@@ -1,6 +1,6 @@
+use log::{debug, info};
 use std::sync::{Arc, Mutex};
 use std::thread;
-use log::{debug, info};
 
 pub fn shared_state() {
     single_thread_lock();
