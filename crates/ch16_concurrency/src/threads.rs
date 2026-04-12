@@ -9,7 +9,7 @@ fn move_example() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(move || {
-        debug!("Heres a vector: {v:?}");
+        debug!("Here's a vector: {v:?}");
     });
 
     handle.join().unwrap();
@@ -18,71 +18,59 @@ fn move_example() {
 #[cfg(test)]
 mod tests {
     use std::thread;
-    use std::thread::JoinHandle;
-    use std::time::Duration;
-    use log::{debug, info};
+    use log::debug;
+    use test_log::test;
+    use anyhow::{anyhow, Result};
 
-    const SLEEP_MS: u64 = 10;
+    fn generate_greetings(num_loops: i32) -> Vec<String> {
+        let thread_name = thread::current().name().unwrap_or("").to_string();
+        let mut result: Vec<String> = Vec::new();
 
-
-    fn main_thread() {
-        for i in 0..5 {
-            debug!(">> hi number {i} from the main thread!");
-
-            thread::sleep(Duration::from_millis(SLEEP_MS));
+        for i in 0..num_loops {
+            let msg = format!("{thread_name}: hello number {i}!");
+            result.push(msg);
         }
+
+        result
     }
 
-    fn spwan_counter(prefix: String, num_loops: i32) -> JoinHandle<Vec<String>> {
+    #[test]
+    fn test_spawn() {
+        let msg = "hello world!";
+        let main_thread_id = thread::current().id();
+
         let handle = thread::spawn(move || {
-            let mut result: Vec<String> = Vec::new();
-
-            for i in 0..num_loops {
-                let msg = format!("{prefix} hi number {i} from the spawned thread!");
-                debug!("{msg}");
-                result.push(msg);
-                thread::sleep(Duration::from_millis(SLEEP_MS));
-            }
-
-            result
+            assert_ne!(thread::current().id(), main_thread_id);
+            // we can do whatever we want here
+            msg
         });
 
-        handle
+        assert_eq!(handle.join().unwrap(), msg);
     }
 
-    #[test_log::test]
-    fn test_thread_name() -> Result<(), Box<dyn std::error::Error>> {
-        let thread_name = "thread1";
+    #[test]
+    fn test_multi_thread() -> Result<()> {
+        let (mut result1, mut result2) = (vec![], vec![]);
 
-        let handle = thread::Builder::new()
-            .name(thread_name.to_string())
-            .spawn(move || {
-                thread::current().name().unwrap_or("").to_string()
-            })?;
+        thread::scope(|s| -> Result<()> {
+            let h1 = thread::Builder::new()
+                .name("foo".to_string())
+                .spawn_scoped(s, || generate_greetings(5))?;
+            let h2 = thread::Builder::new()
+                .name("bar".to_string())
+                .spawn_scoped(s, || generate_greetings(10))?;
 
-        let thread_result = handle
-            .join()
-            .map_err(|e| format!("thread panicked: {e:?}"))?;
+            result1 = h1.join().map_err(|e| anyhow!("thread1 panicked: {e:?}"))?;
+            result2 = h2.join().map_err(|e| anyhow!("thread2 panicked: {e:?}"))?;
 
-        assert_eq!(thread_result, thread_name);
+            Ok(())
+        })?;
 
-        Ok(())
-    }
+        debug!("{result1:?} {result2:?} ");
 
-    #[test_log::test]
-    fn test_multi_thread() -> Result<(), Box<dyn std::error::Error>> {
-        let handle_thread1 = spwan_counter(String::from("####"), 5);
-        let handle_thread2 = spwan_counter(String::from("!!!!"), 10);
+        assert_eq!(5, result1.len());
+        assert_eq!(10, result2.len());
 
-        main_thread();
-
-        let thread_result1 = handle_thread1.join().unwrap();
-        info!("{:?}", thread_result1);
-        assert_eq!(5, thread_result1.len());
-
-        let thread_result2 = handle_thread2.join().unwrap();
-        info!("{:?}", thread_result2);
-        assert_eq!(10, thread_result2.len());
 
         Ok(())
     }

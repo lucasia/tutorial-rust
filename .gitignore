@@ -24,3 +24,5 @@ target
 
 # traces
 **/*.trace
+
+CLAUDE.md
