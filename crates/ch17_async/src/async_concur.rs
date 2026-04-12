@@ -1,54 +1,3 @@
-use log::debug;
-use std::time::Duration;
-
-pub fn async_concur() {
-    message_passing();
-}
-
-fn message_passing() {
-    trpl::block_on(async {
-        let (tx, mut rx) = trpl::channel();
-
-        let tx1 = tx.clone();
-        let tx1_fut = async move {
-            let vals = vec![
-                String::from("hi"),
-                String::from("from"),
-                String::from("the"),
-                String::from("future"),
-            ];
-
-            for val in vals {
-                tx1.send(val).unwrap();
-                trpl::sleep(Duration::from_millis(10)).await;
-            }
-        };
-
-        let rx_fut = async {
-            while let Some(val) = rx.recv().await {
-                debug!("Received: {}", val);
-            }
-        };
-
-        let tx_fut = async move {
-            let vals = vec![
-                String::from("more"),
-                String::from("messages"),
-                String::from("for"),
-                String::from("you"),
-            ];
-
-            for val in vals {
-                tx.send(val).unwrap();
-                trpl::sleep(Duration::from_millis(100)).await;
-            }
-        };
-
-        trpl::join!(tx1_fut, tx_fut, rx_fut);
-    });
-}
-
-
 #[cfg(test)]
 mod tests {
     use std::thread;
@@ -99,6 +48,48 @@ mod tests {
         };
 
         trpl::join(fut1, fut2).await;
+    }
+
+    #[test(tokio::test)]
+    async fn test_message_passing() {
+        let (tx, mut rx) = trpl::channel();
+
+        let tx1 = tx.clone();
+        let tx1_fut = async move {
+            let vals = vec![
+                String::from("hi"),
+                String::from("from"),
+                String::from("the"),
+                String::from("future"),
+            ];
+
+            for val in vals {
+                tx1.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(10)).await;
+            }
+        };
+
+        let rx_fut = async {
+            while let Some(val) = rx.recv().await {
+                debug!("Received: {}", val);
+            }
+        };
+
+        let tx_fut = async move {
+            let vals = vec![
+                String::from("more"),
+                String::from("messages"),
+                String::from("for"),
+                String::from("you"),
+            ];
+
+            for val in vals {
+                tx.send(val).unwrap();
+                trpl::sleep(Duration::from_millis(100)).await;
+            }
+        };
+
+        trpl::join!(tx1_fut, tx_fut, rx_fut);
     }
 
     #[test(tokio::test)]

@@ -1,6 +1,7 @@
 use std::time::Duration;
 use trpl::Either;
 
+// TODO - translate into test cases one that runs, one that times out
 pub fn timeout_example() {
     trpl::block_on(async {
         let slow = async {
