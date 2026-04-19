@@ -41,7 +41,7 @@ mod tests {
 
         impl State for PendingReview {
             fn request_review(self: Box<Self>) -> Box<dyn State> {
-                self  // no-op, pending-review -> pending-review
+                self // no-op, pending-review -> pending-review
             }
 
             fn approve(self: Box<Self>) -> Box<dyn State> {
@@ -97,7 +97,6 @@ mod tests {
                     self.state = Some(s.approve())
                 }
             }
-
         }
     }
 
@@ -112,7 +111,6 @@ mod tests {
         post.request_review();
         assert_eq!("", post.content());
 
-        // TODO - add post approve logic!, see: https://doc.rust-lang.org/book/ch18-03-oo-design-patterns.html#adding-approve-to-change-contents-behavior
         post.approve();
         assert_eq!(text, post.content());
     }

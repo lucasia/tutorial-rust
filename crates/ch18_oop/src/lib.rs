@@ -1,4 +1,5 @@
 mod state_pattern;
+mod state_pattern_types;
 mod traits;
 
 #[cfg(test)]
