@@ -16,41 +16,65 @@ mod tests {
         }
 
         trait State {
+            fn content<'a>(&self, _post: &'a Post) -> &'a str {
+                ""
+            }
             // self: Box<Self> means this method takes ownership of the Box, consuming the current
             // state. This allows us to return a brand new state, effectively replacing ourselves.
             fn request_review(self: Box<Self>) -> Box<dyn State>;
+            fn approve(self: Box<Self>) -> Box<dyn State>;
         }
 
         struct Draft {}
         struct PendingReview {}
+        struct Published {}
 
         impl State for Draft {
             fn request_review(self: Box<Self>) -> Box<dyn State> {
                 Box::new(PendingReview {})
             }
+
+            fn approve(self: Box<Self>) -> Box<dyn State> {
+                self // no-op, can't move from draft -> approve
+            }
         }
 
         impl State for PendingReview {
             fn request_review(self: Box<Self>) -> Box<dyn State> {
-                self
+                self  // no-op, pending-review -> pending-review
+            }
+
+            fn approve(self: Box<Self>) -> Box<dyn State> {
+                Box::new(Published {})
             }
         }
 
-        impl Post {
-            pub fn approve(&self) {
-                todo!()
+        impl State for Published {
+            fn content<'a>(&self, post: &'a Post) -> &'a str {
+                post.content.as_ref()
+            }
+
+            fn request_review(self: Box<Self>) -> Box<dyn State> {
+                self // no-op, can't move approve -> pending-review
+            }
+
+            fn approve(self: Box<Self>) -> Box<dyn State> {
+                self // no-op, approve -> approve
             }
         }
 
         impl Post {
             pub fn content(&self) -> &str {
-                // TODO - need state logic, for now just return empty str
-                ""
+                self.state.as_ref().unwrap().content(self)
             }
 
             pub fn add_text(&mut self, text: &str) {
                 self.content.push_str(text);
             }
+
+            // ====================================================
+            //  states
+            // ====================================================
 
             pub fn new() -> Post {
                 Post {
@@ -67,6 +91,13 @@ mod tests {
                     self.state = Some(s.request_review())
                 }
             }
+
+            pub fn approve(&mut self) {
+                if let Some(s) = self.state.take() {
+                    self.state = Some(s.approve())
+                }
+            }
+
         }
     }
 
