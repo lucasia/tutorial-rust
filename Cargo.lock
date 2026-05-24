@@ -219,6 +219,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "ch20_advanced"
+version = "0.1.0"
+dependencies = [
+ "log",
+ "test-log",
+]
+
+[[package]]
 name = "ch2_game"
 version = "0.1.0"
 dependencies = [

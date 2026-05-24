@@ -60,7 +60,7 @@ mod tests {
         }
 
         match p {
-            Point { x, ..} => debug!("x is {x}")
+            Point { x, .. } => debug!("x is {x}"),
         }
     }
 
