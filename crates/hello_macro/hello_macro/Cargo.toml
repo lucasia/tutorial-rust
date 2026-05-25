@@ -1,5 +1,5 @@
 [package]
-name = "ch20_hello_macro"
+name = "hello_macro"
 version = "0.1.0"
 edition = "2024"
 

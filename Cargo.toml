@@ -19,8 +19,8 @@ members = [
     "crates/ch18_oop",
     "crates/ch19_pattern",
     "crates/ch20_advanced",
-    "crates/ch20_hello_macro",
-    "crates/ch20_hello_macro_derive",
+    "crates/hello_macro/hello_macro",
+    "crates/hello_macro/hello_macro_derive",
 ]
 
 resolver = "2" # Recommended for newer Rust versions

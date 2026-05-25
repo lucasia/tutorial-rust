@@ -1,8 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use crate::my_vec;
-    use ch20_hello_macro::HelloMacro;
-    use ch20_hello_macro_derive::HelloMacro;
+    use hello_macro::HelloMacro;
+    use hello_macro_derive::HelloMacro;
     use log::debug;
     use test_log::test;
 

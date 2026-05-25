@@ -5,8 +5,8 @@ edition = "2024"
 
 [dependencies]
 log = "0.4.29"
-ch20_hello_macro = {path = "../ch20_hello_macro"}
-ch20_hello_macro_derive = {path = "../ch20_hello_macro_derive"}
+hello_macro = {path = "../hello_macro/hello_macro"}
+hello_macro_derive = {path = "../hello_macro/hello_macro_derive"}
 
 [dev-dependencies]
 test-log = "0.2.20"

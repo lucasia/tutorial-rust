@@ -222,22 +222,10 @@ dependencies = [
 name = "ch20_advanced"
 version = "0.1.0"
 dependencies = [
- "ch20_hello_macro",
- "ch20_hello_macro_derive",
+ "hello_macro",
+ "hello_macro_derive",
  "log",
  "test-log",
-]
-
-[[package]]
-name = "ch20_hello_macro"
-version = "0.1.0"
-
-[[package]]
-name = "ch20_hello_macro_derive"
-version = "0.1.0"
-dependencies = [
- "quote",
- "syn",
 ]
 
 [[package]]
@@ -566,6 +554,18 @@ dependencies = [
  "r-efi",
  "wasip2",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "hello_macro"
+version = "0.1.0"
+
+[[package]]
+name = "hello_macro_derive"
+version = "0.1.0"
+dependencies = [
+ "quote",
+ "syn",
 ]
 
 [[package]]
