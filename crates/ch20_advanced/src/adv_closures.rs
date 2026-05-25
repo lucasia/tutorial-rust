@@ -35,7 +35,7 @@ mod tests {
     #[derive(Debug, PartialEq)]
     enum Status {
         Value(u32),
-        Stop,
+        _Stop,
     }
 
     #[test]
